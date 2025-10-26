@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 public class Player : MonoBehaviour
 {
     public float velocidade = 20f;
-
+    public int eixoY = 1;
 
     private void OnEnable()
     {
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
 
         Collider2D collider = other.gameObject.GetComponent<Collider2D>();
 
-        if (collider != null && other.gameObject.name == "Score") {
+        if (collider != null && (other.gameObject.name == "Score" || other.gameObject.name == "PowerUp")) {
             GameManager.Instance.AumentarPontuacao();
         } else {
             GameManager.Instance.GameOver();

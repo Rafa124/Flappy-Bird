@@ -3,6 +3,7 @@ using UnityEngine.Serialization;
 
 public class CanoClasse : MonoBehaviour
 {
+    
     public Transform superior;
     public Transform inferior;
     public float velocidade = 5f;
@@ -15,7 +16,7 @@ public class CanoClasse : MonoBehaviour
 
         if (Spawner.Instance != null)
         {
-            Spawner.Instance.taxaSpawn = Mathf.Max(0.25f, Spawner.Instance.taxaSpawn - 0.005f);
+            Spawner.Instance.taxaSpawn = Mathf.Max(0.25f, Spawner.Instance.taxaSpawn - 0.0025f);
         }
         
         bordaEsquerda = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 1f;

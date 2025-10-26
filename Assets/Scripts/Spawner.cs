@@ -9,7 +9,6 @@ public class Spawner : MonoBehaviour
     public float taxaSpawn = 1f;
     public float alturaMinima = -1f;
     public float alturaMaxima = 2f;
-    public float aberturaVertical = 3f;
 
     private float tempoDesdeUltimoSpawn = 0f;
 

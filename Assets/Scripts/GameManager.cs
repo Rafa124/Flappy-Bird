@@ -19,9 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Button medio;
     [SerializeField] public Button dificil;
 
-    [SerializeField] public RectTransform panel;
+    private float abertura_inicial = 3f;
+    public float escala_tempo_inicial = 1f;
+    public float taxa_spawn_inicial = 1f;
 
-    public float escala_tempo = 1f;
+    [SerializeField] public RectTransform panel;
 
     public int pontuacao = 0;
 
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
         medio.onClick.AddListener(medio_func);
         dificil.onClick.AddListener(dificil_func);
         _GameOver.SetActive(false);
+        medio_func();
         Pause();
     }
     
@@ -66,7 +69,9 @@ public class GameManager : MonoBehaviour
         botaoJogar.SetActive(false);
         _GameOver.SetActive(false);
 
-        Time.timeScale = escala_tempo;
+        Time.timeScale = escala_tempo_inicial;
+        abertura = abertura_inicial;
+        gerador.taxaSpawn = taxa_spawn_inicial;
         jogador.enabled = true;
 
         CanoClasse[] canos = FindObjectsByType<CanoClasse>(FindObjectsSortMode.None);
@@ -93,20 +98,26 @@ public class GameManager : MonoBehaviour
 
     void facil_func()
     {
-        abertura = 4f;
-        escala_tempo = .75f;
+        abertura_inicial = 4f;
+        escala_tempo_inicial = .75f;
+        taxa_spawn_inicial = 1f;
+        jogador.velocidade = 40f;
     }
 
     void medio_func()
     {
-        abertura = 3f;
-        escala_tempo = 1f;
+        abertura_inicial = 3f;
+        escala_tempo_inicial = 1.10f;
+        taxa_spawn_inicial = 0.4f;
+        jogador.velocidade = 30f;
     }
 
     void dificil_func()
     {
-        abertura = 2f;
-        escala_tempo = 1.25f;
+        abertura_inicial = 3f;
+        escala_tempo_inicial = 1.275f;
+        taxa_spawn_inicial = 0.275f;
+        jogador.velocidade = 20f;
     }
 
 

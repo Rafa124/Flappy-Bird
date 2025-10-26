@@ -14,9 +14,7 @@ public class Pipes : MonoBehaviour
     {
         velocidade += .005f;
         
-        if (Spawner.Instance != null) {
-            Spawner.Instance.taxaSpawn = Mathf.Max(0.15f, Spawner.Instance.taxaSpawn - 0.05f);
-        }
+        Spawner.Instance.taxaSpawn = Mathf.Max(0.15f, Spawner.Instance.taxaSpawn - 0.05f);
         bordaEsquerda = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 1f;
         superior.position += Vector3.up * abertura / 2;
         inferior.position += Vector3.down * abertura / 2;
